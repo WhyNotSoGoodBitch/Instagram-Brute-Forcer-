@@ -12,5 +12,5 @@
 
 ## Setup
 ```bash
-./install_deps.sh
+./install.sh
 ./instagram_brute.py
