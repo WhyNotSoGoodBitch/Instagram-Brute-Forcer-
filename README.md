@@ -12,5 +12,8 @@
 
 ## Setup
 ```bash
+sudo apt update && upgrade -y
+apt install git
+git clone https://github.com/WhyNotSoGoodBitch/Instagram-Brute-Forcer-.git
 ./install.sh
 ./instagram_brute.py
