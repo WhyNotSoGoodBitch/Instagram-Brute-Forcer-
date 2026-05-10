@@ -19,5 +19,6 @@ sudo apt install python3 python3-venv
 python3 -m venv myenv
 source myenv/bin/activate
 cd Instagram-Brute-Forcer-
-./install.sh
-./instagram_brute.py
+chmod +x install.sh
+sudo ./install.sh
+python3 instagram_brute.py
