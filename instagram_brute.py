@@ -215,9 +215,7 @@ class InstagramAdvancedBrute:
                         'bloks_versioning_id': hashlib.md5(str(random.random()).encode()).hexdigest()[:16],
                         'waterfall_id': hashlib.md5(str(random.random()).encode()).hexdigest()[:16]
                     }
-                    
-                    # Update headers with current CSRF token
-                    headers = {'X-CSRFToken': csrf_token}
+        
                     
                     # Make login request
                     response = self._tor_request(
