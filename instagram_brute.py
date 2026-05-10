@@ -177,11 +177,6 @@ class InstagramAdvancedBrute:
             print("[!] Failed to access Instagram. Check your Tor connection.")
             return None
             
-        # Extract initial tokens
-        csrf_token, rollout_hash = self._extract_tokens(login_page.text)
-        if not csrf_token:
-            print("[!] Failed to extract CSRF token. Instagram may have changed their login flow.")
-            return None
             
         # Get web session ID
         web_session_id = self._get_web_session_id()
